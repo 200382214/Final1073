@@ -96,6 +96,7 @@ let thing2;
 let colours = ['#3498db', '#e74c3c', '#e67e22', '#f1c40f'];
 // a) (4) - Select and store the question 6 element from the index.html file into a variable with the correct visibility scope (remember, it's passed by reference which means it doesn't need to be mutable)
 question6;
+
 // b) (3) - Using JavaScript, create a new 'button' element and store it in a variable
 let button;
 // c) (3) - Change the text property on the button to read 'click me'
@@ -115,17 +116,28 @@ let button;
 
 /* Question 7 - Begin: (17 points) */
 // a) (3) - Create a literal object called Dave
-{
+let Dave = {
   // b) (2) - Add properties and values for first name and last name
 
-
+  firstName:"Dhvanit",
+  lastName:"Mechant",
   // c) (4) - Add a property for birth date that has the value of a new date object with the date "1978-12-22"
 
-};
-// d) (6) - Add a new property, on the Dave object, called "bio" that has the following value:
-// "My name is {firstName} {lastName} and my birth date is {birthDate}." NOTE: Replace the values using string interpolation. Don't forget the important object context when attempting to access the properties.
-
+    birthDate: "1978-12-22",
+  toHTML: function (selector) {
+    let div = document.createElement('div');
+    div.textContent = this.bio();
+    document.querySelector(selector).append(div);
+  },
+  // d) (6) - Add a new property, on the Dave object, called "bio" that has the following value:
+  // "My name is {firstName} {lastName} and my birth date is {birthDate}." NOTE: Replace the values using string interpolation. Don't forget the important object context when attempting to access the properties.
+  bio: function () {
+    console.log(this);
+    return `My name is ${Dave.firstName} ${Dave.lastName} and my birth date is ${Dave.birthDate}.`;
+  }
+}
 // e) (2) - Console log Dave's bio
+console.log(Dave.bio());
 
 /* Question 7 - End */
 
@@ -203,7 +215,7 @@ let Animal = {
 /* Question 12 - Begin: (6 points) */
 // a) (3) - Using the appropriate Object method, create a new Dog object and assign it to the variable 'GoldenRetriever'
 let GoldenRetriever;
-let 
+let
 // b) (3) - Console log the result of calling the eat method on the GoldenRetriever object. You can pass the method any argument you choose. I used 'everything' ;)
 
 /* Question 12 - End */
@@ -213,7 +225,7 @@ let
 // b) (4) - Override the 'eat' method by declaring a new 'eat' property on the GoldenRetriever object and assigning it a new function definition with no parameters
 {
   // c) (2) - Return the following string: "I love all food!"
-  
+
 }
 // b) (3) - Console log the result of calling the eat method on the Budgie object
 
@@ -231,15 +243,16 @@ let
 
 
 /* Question 15 - Begin */
+
 // a) (5) - Write an object constructor for the object Person that takes the following 4 arguments: name, height, weight, and age
 
 function person (name, height, weight, age) {
-  
-  // b) (8) - Assign the arguments to 4 properties called name, height, weight, and age
-  this.name = name;
-  this.height = height;
-  this.weight = weight;
-  this.age = age;
+
+ // b) (8) - Assign the arguments to 4 properties called name, height, weight, and age
+ this.name = name;
+ this.height = height;
+ this.weight = weight;
+ this.age = age;
 }
 
 /* Question 15 - End */
@@ -266,11 +279,11 @@ person();
 // a) (4) - Create a new prototypal method on the Employee constructor that adds the function "details" and has the parameters 'property' and 'selector'
 function Employee(){
   // b) (4) - Using the property argument, select the property from the object and assign it to a variable called 'prop'. Hint: Because 'property' will be a string, you will need to use the [index] syntax to select it on the object. The dot syntax will not work.
-  
+
   // c) (4) - Select and store the appropriate HTML element using the selector argument in a variable called 'element'
-  
+
   // d) (2) - Assign the 'prop' value to the 'element's text property
-  
+
 }
 /* Question 17 - End */
 
@@ -304,7 +317,7 @@ const requestURL = "https://gcsmckinnon.netlify.com/week-12/json-apis/data.json"
 fetch(requestURL);
 // b) (6) - Return the response as JSON
 {
-  return response.json(); 
+  return response.json();
 }
 // c) (2) - Pass in the dataFetch definition
 
@@ -312,13 +325,13 @@ fetch(requestURL);
 
 
 /* Question 20 - Begin: (14 points) */
-
-  products.forEach(product => 
-  // a) (5) - Loop through all the products using a for each loop
-  {
-    // b) (9) - Console log each product's sku, name, height, length, and width in the following format:
-    // `{name}::{sku} - {height}cm x {length}cm x {width}cm, {weight}kg`
-    console.log(`${product["name"]}::${product["sku"]} - ${product["height"]}cm x ${product["length"]}cm x ${product["width"]}cm, ${product["weight"]}kg`);
-  })
+products.forEach(product =>
+ // a) (5) - Loop through all the products using a for each loop
+ {
+   // b) (9) - Console log each product's sku, name, height, length, and width in the following format:
+   // `{name}::{sku} - {height}cm x {length}cm x {width}cm, {weight}kg`
+   console.log(`${product["name"]}::${product["sku"]} - ${product["height"]}cm x ${product["length"]}cm x ${product["width"]}cm, ${product["weight"]}kg`);
+ })
 
 /* Question 20 - End */
+
