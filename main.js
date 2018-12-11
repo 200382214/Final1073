@@ -22,7 +22,7 @@
 /* Question 1 - Begin: (12 points) */
 // Using the appropriate visibility modifiers,
 // a) (3) - Make the following variable globally scoped and equal to an integer value
- x = 24;
+x = 24;
 // b) (3) - Make the following variable functionally scoped and equal to a string value
 (function myFunction() {
     var y = "Hey There";
@@ -189,18 +189,21 @@ let notASquare;
 }
 /* Question 10 - End */
 
-
 /* Question 11 - Begin: (12 points) */
 // a) (3) - Using the appropriate Object method, create a new Animal object and assign it to the variable 'Dog'
 let Dog;
-// b) (3) - Initialize the Dogs object with the argument 'Dog'
+let Animal = {
 
+// b) (3) - Initialize the Dogs object with the argument 'Dog'
+  Dogs = Dog
+}
 /* Question 11 - End */
 
 
 /* Question 12 - Begin: (6 points) */
 // a) (3) - Using the appropriate Object method, create a new Dog object and assign it to the variable 'GoldenRetriever'
 let GoldenRetriever;
+let 
 // b) (3) - Console log the result of calling the eat method on the GoldenRetriever object. You can pass the method any argument you choose. I used 'everything' ;)
 
 /* Question 12 - End */
@@ -210,7 +213,7 @@ let GoldenRetriever;
 // b) (4) - Override the 'eat' method by declaring a new 'eat' property on the GoldenRetriever object and assigning it a new function definition with no parameters
 {
   // c) (2) - Return the following string: "I love all food!"
-
+  
 }
 // b) (3) - Console log the result of calling the eat method on the Budgie object
 
@@ -220,46 +223,54 @@ let GoldenRetriever;
 /* Question 14 - Begin: (6 points) */
 // a) (4) - Call the 'move' method on the GoldenRetriever object, passing an anonymous function as a callback
 {
+  move.call()
   // b) (2) - Console log the following string: "Hey, I'm walkin' 'ere!!!"
-
+  console.log("Hey, I'm walkin' 'ere!!!");
 }
 /* Question 14 - End */
 
 
 /* Question 15 - Begin */
 // a) (5) - Write an object constructor for the object Person that takes the following 4 arguments: name, height, weight, and age
-{
+
+function person (name, height, weight, age) {
+  
   // b) (8) - Assign the arguments to 4 properties called name, height, weight, and age
-
-
-
-
+  this.name = name;
+  this.height = height;
+  this.weight = weight;
+  this.age = age;
 }
+
 /* Question 15 - End */
 
 
 /* Question 16 - Begin: (20 points) */
 // a) (5) - Write an object constructor for the object Employee that takes the 4 arguments used for the Person object and a new argument called 'career'
-{
-  // b) (2) - Assign the career argument to a property called 'career'
-
-  // c) (7) - Inherit Person by instantiating it correctly
-
-}
+function Employee(name, height, weight, age, career) {
+    // b) (2) - Assign the career argument to a property called 'career'
+    this.career = career;
+    // c) (7) - Inherit Person by instantiating it correctly
+    this.name = name;
+    this.height = height;
+    this.weight = weight;
+    this.age = age;
+  }
 // d) (6) - Complete the inheritance by assigning the Person prototype to the Employee prototype
+person();
 
 /* Question 16 - End */
 
 
 /* Question 17 - Begin: (14 points) */
 // a) (4) - Create a new prototypal method on the Employee constructor that adds the function "details" and has the parameters 'property' and 'selector'
-{
+function Employee(){
   // b) (4) - Using the property argument, select the property from the object and assign it to a variable called 'prop'. Hint: Because 'property' will be a string, you will need to use the [index] syntax to select it on the object. The dot syntax will not work.
-
+  
   // c) (4) - Select and store the appropriate HTML element using the selector argument in a variable called 'element'
-
+  
   // d) (2) - Assign the 'prop' value to the 'element's text property
-
+  
 }
 /* Question 17 - End */
 
@@ -272,11 +283,16 @@ let GoldenRetriever;
 // age: 27
 // career: plumber
 // and assign it to a variable named 'plumber'
+function Employee (name, height, weight, age, career) {
+  this.name = name;
+  this.height = height;
+  this.weight = weight;
+  this.age = age;
+  this.career = career;
+}
 
+let plumber = new Employee("Bob", 178, 78, 27, plumber);
 // b) (15) - Using the Employee details method, pass the correct property name and selector string to fill in the table under #question19 in the index.html. Make sure you call the method on 'plumber' or you'll get 'undefined' and not receive the marks.
-
-
-
 
 
 /* Question 18 - End */
@@ -285,10 +301,10 @@ let GoldenRetriever;
 /* Question 19 - Begin: (10 points) */
 const requestURL = "https://gcsmckinnon.netlify.com/week-12/json-apis/data.json";
 // a) (2) - Fetch the above URL
-
+fetch(requestURL);
 // b) (6) - Return the response as JSON
 {
-
+  return response.json(); 
 }
 // c) (2) - Pass in the dataFetch definition
 
@@ -296,13 +312,13 @@ const requestURL = "https://gcsmckinnon.netlify.com/week-12/json-apis/data.json"
 
 
 /* Question 20 - Begin: (14 points) */
-{
 
+  products.forEach(product => 
   // a) (5) - Loop through all the products using a for each loop
   {
     // b) (9) - Console log each product's sku, name, height, length, and width in the following format:
     // `{name}::{sku} - {height}cm x {length}cm x {width}cm, {weight}kg`
+    console.log(`${product["name"]}::${product["sku"]} - ${product["height"]}cm x ${product["length"]}cm x ${product["width"]}cm, ${product["weight"]}kg`);
+  })
 
-  }
-}
 /* Question 20 - End */
